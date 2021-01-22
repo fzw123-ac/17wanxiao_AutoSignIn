@@ -17,8 +17,8 @@ chrome_options = Options()
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
-driver = webdriver.Chrome ('/usr/bin/chromedriver', chrome_options=chrome_options)
-# driver = webdriver.Chrome('/usr/local/bin/chromedriver', options=chrome_options)
+driver = webdriver.Chrome ('/usr/bin/chromedriver',chrome_options=chrome_options)
+#driver = webdriver.Chrome('/usr/local/bin/chromedriver', options=chrome_options)
 
 
 def initLogging():
@@ -107,9 +107,9 @@ def GetUserJson(token):
         "method": "userComeApp"
     }
     res = requests.post(sign_url, json=user_json).json()
-    #print(res)
+    # print(res)
     data = json.loads(res['data'])
-    #print(data)
+    # print(data)
     post_dict = {
         "add": data['add'],
         "areaStr": data['areaStr'],
@@ -133,7 +133,6 @@ def GetUserJson(token):
                            for i in data['cusTemplateRelations']],
         }
     }
-    #print(post_dict)
     return post_dict
 
 
@@ -144,7 +143,7 @@ def check_in(token):
     #print(jsons)
     # 提交打卡
     res = requests.post(sign_url, json=jsons, timeout=10).json()
-    #print(res)
+    # print(res)
     return res
 
 
